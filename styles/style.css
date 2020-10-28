@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Ropa Sans', sans-serif;
+  color: #ffd600;
+  letter-spacing: 5px;
+}
+
+header {
+  background-image: url('../img/sw-header.jpg');
+  height: 353px;
+  background-position: center;
+  background-size: cover;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 64px;
+  padding-top: 12vh;
+  padding-left: 6vh;
+}
+
+h2 {
+  background-color: #535556;
+  text-align: center;
+  height: 55px;
+  padding-top: 10px;
+  font-size: 30px;
+  border-radius: 10px 10px 0 0;
+}
+
+h3 {
+  background-color: #748687;
+  height: 55px;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.container {
+  background-color: #424242;
+}
+
+.characters,
+.details {
+  width: 400px;
+  min-height: 500px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -55px;
+}
+
+.characters {
+  background-color: #c4c4c4;
+}
+
+.name {
+  background-color: #c4c4c4;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 3px;
+}
+
+.planet {
+  background-color: #8e8e8e;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+.persons-details {
+  background-color: #c4c4c4;
+  height: 250px;
+}
+
+.planets-details {
+  background-color: #8e8e8e;
+  height: 250px;
+}
