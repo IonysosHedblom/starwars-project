@@ -1,4 +1,4 @@
-async function loadCatalog() {
+function loadCatalog() {
   const btnRight = document.querySelector('.btn-right');
   const btnLeft = document.querySelector('.btn-left');
   const characterList = document.querySelector('.character-list');
