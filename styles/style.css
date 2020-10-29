@@ -11,7 +11,7 @@ h3 {
   color: #ffd600;
   letter-spacing: 5px;
 }
-p{
+p {
   font-size: 30px;
 }
 header {
@@ -76,7 +76,7 @@ h3 {
   height: 55px;
   padding: 14px 0 0 15px;
   letter-spacing: 2px;
-  
+
   cursor: pointer;
 }
 
@@ -85,18 +85,14 @@ h3 {
   color: #fff;
 }
 
-
-
 .character-item:nth-child(even) {
-  background-color: #E1DEDE;
+  background-color: #e1dede;
   color: #535556;
 }
-
 
 .character-item:nth-child(even):hover {
   color: #fff;
 }
-
 
 .character-list li:hover {
   background-color: #444444;
@@ -117,13 +113,13 @@ h3 {
   padding: 10px 0 10px 15px;
 }
 
-.persons-details {
+.person-details {
   background-color: #c4c4c4;
   height: 250px;
   padding-left: 15px;
 }
 
-.persons-details li {
+.person-details li {
   padding: 6px 0;
   letter-spacing: 2px;
 }
@@ -141,49 +137,44 @@ h3 {
   letter-spacing: 2px;
 }
 
-.btn{
+.btn {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   margin-top: 20px;
   letter-spacing: 25px;
 }
-.btn-left{
+.btn-left {
   margin-right: 20px;
-   
 }
-.btn-left:hover{
+.btn-left:hover {
   margin-right: 25px;
   transition: 0.5s ease;
 }
 
-.btn-right:hover{
-  margin-left: 5px; 
-  transition: 0.5s ease; 
+.btn-right:hover {
+  margin-left: 5px;
+  transition: 0.5s ease;
 }
 
-button{
+button {
   font-size: 30px;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   border: none;
   cursor: pointer;
   transition: 0.5s ease;
-  
 }
 
-
 @media screen and (max-width: 1100px) {
- .card-container{
-   flex-direction: column;
-   
- }
- .characters{
-   width: 80vw;
-   margin: 20px auto;
-
- }
- .details{
-   width: 80vw;
-   margin: 10vh auto;
- }
+  .card-container {
+    flex-direction: column;
+  }
+  .characters {
+    width: 80vw;
+    margin: 20px auto;
+  }
+  .details {
+    width: 80vw;
+    margin: 10vh auto;
+  }
 }
