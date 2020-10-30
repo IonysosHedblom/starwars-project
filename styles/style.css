@@ -70,7 +70,7 @@ h3 {
 .characters {
   background-color: #c4c4c4;
   position: relative;
- padding-bottom: 70px;
+ padding-bottom: 38px;
  
 }
 
@@ -179,7 +179,9 @@ button {
   border: 2px solid #f3f3f3;
   border-top: 3px solid #30365f;
   border-radius: 100%;
-  margin: auto;
+  
+  margin: 200px auto 0 auto;
+
   animation: spin 1s infinite linear;
 }
 
