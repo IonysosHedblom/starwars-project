@@ -69,6 +69,9 @@ h3 {
 
 .characters {
   background-color: #c4c4c4;
+  position: relative;
+ padding-bottom: 70px;
+ 
 }
 
 .character-list li {
@@ -140,9 +143,12 @@ h3 {
 .btn {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   margin-top: 20px;
   letter-spacing: 25px;
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+ 
 }
 .btn-left {
   margin-right: 20px;
