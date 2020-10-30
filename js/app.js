@@ -2,6 +2,7 @@ function loadCatalog() {
   const btnRight = document.querySelector('.btn-right');
   const btnLeft = document.querySelector('.btn-left');
   const characterList = document.querySelector('.character-list');
+  const spinner = document.querySelector('.spinner');
 
   // Character list
   const name = document.querySelector('.name');
@@ -24,43 +25,56 @@ function loadCatalog() {
 
   const pageCounter = document.querySelector('.page-counter');
 
-  let page = 1;
+  let currentPage = 1;
 
   fetchPage();
 
-  async function fetchPage() {
+  function renderDetails(character, planetResponse, listItem) {
+    name.innerText = listItem.innerText;
+    height.innerText = `Height: ${character.height}`;
+    mass.innerText = `Mass: ${character.mass}kg`;
+    hairColor.innerText = `Hair color: ${character.hair_color}`;
+    skinColor.innerText = `Skin color: ${character.skin_color}`;
+    eyeColor.innerText = `Eye color: ${character.eye_color}`;
+    birthYear.innerText = `Birth year: ${character.birth_year}`;
+    gender.innerText = `Gender: ${character.gender}`;
+
+    planet.innerText = planetResponse.name;
+    rotation.innerText = `Rotation period: ${planetResponse.rotation_period}`;
+    orbital.innerText = `Orbital period: ${planetResponse.orbital_period}`;
+    diameter.innerText = `Diameter: ${planetResponse.diameter}`;
+    climate.innerText = `Climate: ${planetResponse.climate}`;
+    gravity.innerText = `Gravity: ${planetResponse.gravity}`;
+    terrain.innerText = `Terrain: ${planetResponse.terrain}`;
+  }
+
+  async function fetchCharacterdata(page) {
     // Fetch character data
     const request = await fetch(`http://swapi.dev/api/people/?page=${page}`);
     const response = await request.json();
+
     const characters = response.results;
 
-    characters.forEach(async character => {
+    return characters;
+  }
+
+  async function fetchPage() {
+    // Fetch character data
+    spinner.classList.remove('hidden');
+    const characterData = await fetchCharacterdata(currentPage);
+
+    // Fetch planet data
+    characterData.forEach(async character => {
       const planetRequest = await fetch(character.homeworld);
       const planetResponse = await planetRequest.json();
-
+      // Create list items for each character
       const listItem = document.createElement('li');
       listItem.classList.add('character-item');
       listItem.innerText = character.name;
       characterList.append(listItem);
+      spinner.classList.add('hidden');
       listItem.addEventListener('click', () => {
-        // Update character details
-        name.innerText = listItem.innerText;
-        height.innerText = `Height: ${character.height}`;
-        mass.innerText = `Mass: ${character.mass}kg`;
-        hairColor.innerText = `Hair color: ${character.hair_color}`;
-        skinColor.innerText = `Skin color: ${character.skin_color}`;
-        eyeColor.innerText = `Eye color: ${character.eye_color}`;
-        birthYear.innerText = `Birth year: ${character.birth_year}`;
-        gender.innerText = `Gender: ${character.gender}`;
-
-        //Update planet details
-        planet.innerText = planetResponse.name;
-        rotation.innerText = `Rotation period: ${planetResponse.rotation_period}`;
-        orbital.innerText = `Orbital period: ${planetResponse.orbital_period}`;
-        diameter.innerText = `Diameter: ${planetResponse.diameter}`;
-        climate.innerText = `Climate: ${planetResponse.climate}`;
-        gravity.innerText = `Gravity: ${planetResponse.gravity}`;
-        terrain.innerText = `Terrain: ${planetResponse.terrain}`;
+        renderDetails(character, planetResponse, listItem);
       });
     });
   }
@@ -69,10 +83,11 @@ function loadCatalog() {
     while (characterList.firstChild) {
       characterList.removeChild(characterList.firstChild);
     }
-    if (page !== 8) {
-      page++;
-      pageCounter.innerText = page;
+    if (currentPage !== 8) {
+      currentPage++;
+      pageCounter.innerText = currentPage;
     }
+
     fetchPage();
   });
 
@@ -80,11 +95,11 @@ function loadCatalog() {
     while (characterList.firstChild) {
       characterList.removeChild(characterList.firstChild);
     }
-
-    if (page !== 1) {
-      page--;
-      pageCounter.innerText = page;
+    if (currentPage !== 1) {
+      currentPage--;
+      pageCounter.innerText = currentPage;
     }
+
     fetchPage();
   });
 }
