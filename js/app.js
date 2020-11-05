@@ -3,7 +3,7 @@ function loadCatalog() {
   const btnLeft = document.querySelector('.btn-left');
   const characterList = document.querySelector('.character-list');
   const spinner = document.querySelector('.spinner');
-  const buttons = document.querySelector('.btn')
+  const buttons = document.querySelector('.btn');
 
   // Character list
   const name = document.querySelector('.name');
@@ -51,7 +51,8 @@ function loadCatalog() {
 
   async function fetchCharacterdata(page) {
     // Fetch character data
-    const request = await fetch(`http://swapi.dev/api/people/?page=${page}`);
+
+    const request = await fetch(`https://swapi.dev/api/people/?page=${page}`);
     const response = await request.json();
 
     const characters = response.results;
@@ -68,14 +69,13 @@ function loadCatalog() {
     characterData.forEach(async character => {
       const planetRequest = await fetch(character.homeworld);
       const planetResponse = await planetRequest.json();
-   
-     
-     createList(character, planetResponse)
+
+      createList(character, planetResponse);
     });
     spinner.classList.add('hidden');
   }
 
-  function createList(character, planetResponse){
+  function createList(character, planetResponse) {
     // Create list items for each character
     const listItem = document.createElement('li');
     listItem.classList.add('character-item');
@@ -84,22 +84,18 @@ function loadCatalog() {
     listItem.addEventListener('click', () => {
       renderDetails(character, planetResponse, listItem);
     });
-    
-    
   }
 
   btnRight.addEventListener('click', () => {
     while (characterList.firstChild) {
       characterList.removeChild(characterList.firstChild);
-    
     }
 
     if (currentPage !== 8) {
       currentPage++;
       pageCounter.innerText = currentPage;
-     
     }
-    
+
     fetchPage();
   });
 
