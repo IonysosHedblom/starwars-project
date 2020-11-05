@@ -51,8 +51,9 @@ function loadCatalog() {
 
   async function fetchCharacterdata(page) {
     // Fetch character data
-
-    const request = await fetch(`https://swapi.dev/api/people/?page=${page}`);
+    const URL = 'http://swapi.dev/api/people/?page=';
+    URL.replace('http', 'https');
+    const request = await fetch(`${URL}${page}`);
     const response = await request.json();
 
     const characters = response.results;
@@ -67,7 +68,9 @@ function loadCatalog() {
 
     // Fetch planet data
     characterData.forEach(async character => {
-      const planetRequest = await fetch(character.homeworld);
+      const homeworld = character.homeworld;
+      homeworld.replace('http', 'https');
+      const planetRequest = await fetch(homeworld);
       const planetResponse = await planetRequest.json();
 
       createList(character, planetResponse);
